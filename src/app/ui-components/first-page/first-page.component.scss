@@ -57,7 +57,8 @@
     grid-template-rows: 50px max-content;
     grid-template-areas:
             "sub-header"
-            "items-container";
+            "items-container"
+            "open-button";
     overflow: auto;
 
     .items-container {
@@ -68,6 +69,21 @@
       gap: 20px;
     }
 
+    dialog[open] {
+      &::backdrop {
+        background-color: rgb(0 0 0 / 25%);
+      }
+      button {
+        color: black;
+      }
+    }
+
+    button {
+      grid-area: open-button;
+      margin: 20px auto;
+      max-height: fit-content;
+      padding: 20px;
+    }
   }
 
   .footer {
@@ -77,4 +93,5 @@
     justify-content: center;
     column-gap: 20px;
   }
+
 }

@@ -21,7 +21,8 @@
             [value]="selectedPrice"
             [attr.aria-valuenow]="selectedPrice"
             (input)="onPriceRangeChanged($event)"
-            aria-labelledby="price-range-label"
+            aria-labelledby="price-range-label price-range-output"
+            aria-describedby="price-range-label price-range-output"
             aria-controls="price-range-output"
           />
         </label>
@@ -32,21 +33,29 @@
   </nav>
   <main class="main">
     <h2 class="sub-header">Items available( {{filteredItems.length}})</h2>
+    <!--img src="test" autofocus aria-disabled="test"-->
     <!--label id="test">
       <input type="text" id="username" aria-label="" placeholder="" autocomplete="username" />
     </label-->
     <div class="items-container" role="list" [attr.aria-label]="'There are ' + filteredItems.length + ' items available'" aria-live="polite" aria-relevant="all">
       <!-- by adding role='list', it's better for AT, even Accessibility Tree shows better information -->
       <app-item-card
-        *ngFor="let item of filteredItems"
+        *ngFor="let item of filteredItems; let i = index"
         [name]="item.name"
         [image]="item.image"
         [link]="item.link"
         [description]="item.description"
         [price]="item.price"
+        [index]="i"
         role="listitem"
       ></app-item-card>
     </div>
+    <button id="openDialogButton" (click)="open()">Open Dialog</button>
+    <dialog id="myDialog" #myDialog aria-labelledby="dialog-title" aria-describedby="dialog-description">
+      <h2 id="dialog-title">Dialog Title</h2>
+      <p id="dialog-description">This is a native HTML dialog with accessible content.</p>
+      <button name="close-button" id="closeDialogButton" (click)="close()">Close Dialog</button>
+    </dialog>
   </main>
   <footer class="footer">
     <a routerLink="/second-page"

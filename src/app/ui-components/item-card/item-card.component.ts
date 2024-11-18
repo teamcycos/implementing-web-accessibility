@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 export interface ItemCard {
   name: string;
@@ -14,9 +14,10 @@ export interface ItemCard {
   styleUrls: ['./item-card.component.scss']
 })
 export class ItemCardComponent {
-  @Input() name: string = '';
-  @Input() link: string = '';
-  @Input() image: string = '';
-  @Input() description: string = '';
-  @Input() price: number = 0;
+  @Input() name = '';
+  @Input() link = '';
+  @Input() image = '';
+  @Input() description = '';
+  @Input() price = 0;
+  @Input() index = 0;
 }

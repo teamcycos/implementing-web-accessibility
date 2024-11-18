@@ -1,7 +1,7 @@
 <a [attr.href]="link" class="item-card">
     <!-- by adding a more meaningful ariaLabel, AT can describe the user what is this link about -->
-    <article aria-describedby="heading1">
-        <h3 id="heading1"><b>{{name}}</b></h3>
+    <article [attr.aria-describedby]="'heading' + index">
+        <h3 [attr.id]="'heading' + index"><b>{{name}}</b></h3>
         <img [attr.src]="image" alt=""/>
         <p class="description">{{description}}</p>
         <p class="price-tag"><b>€{{price}}</b></p>

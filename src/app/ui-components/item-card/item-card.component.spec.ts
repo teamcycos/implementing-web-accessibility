@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ItemCardComponent } from './item-card.component';
+import {ItemCardComponent} from './item-card.component';
 import {axe, toHaveNoViolations} from "jasmine-axe";
 
 describe('ItemCardComponent', () => {

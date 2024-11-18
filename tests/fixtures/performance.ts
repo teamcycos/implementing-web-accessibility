@@ -6,7 +6,7 @@ export const lighthouseTest = base.extend<object, { port: number; browser: Brows
 	port: [
 		// biome-ignore lint/correctness/noEmptyPattern: Required by lighthouseTest
 		async ({}, use) => {
-			const port = 4200;
+			const port = 4201;
 			await use(port);
 		},
 		{ scope: 'worker' },

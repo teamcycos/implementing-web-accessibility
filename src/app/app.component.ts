@@ -1,5 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { ItemCard } from './ui-components/item-card/item-card.component';
+import {Component, OnInit} from '@angular/core';
+import {ItemCard} from './ui-components/item-card/item-card.component';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { ItemCard } from './ui-components/item-card/item-card.component';
 export class AppComponent implements OnInit {
   title = 'accessibilityApp';
   priceRange!: number;
-  selectedPrice: number = 150;
+  selectedPrice = 150;
   filteredItems: ItemCard[] = [];
 
   onPriceRangeChanged(event: Event) {

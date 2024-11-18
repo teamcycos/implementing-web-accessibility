@@ -1,5 +1,5 @@
-import { isDevMode, NgModule } from '@angular/core';
-import { ExtraOptions, RouterModule, Routes } from '@angular/router';
+import {isDevMode, NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {FirstPageComponent} from "./ui-components/first-page/first-page.component";
 import {SecondPageComponent} from "./ui-components/second-page/second-page.component";
 

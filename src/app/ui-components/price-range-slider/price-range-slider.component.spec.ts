@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PriceRangeSliderComponent } from './price-range-slider.component';
+import {PriceRangeSliderComponent} from './price-range-slider.component';
 import {axe, toHaveNoViolations} from "jasmine-axe";
 
 describe('PriceRangeSliderComponent', () => {
