@@ -29,7 +29,7 @@
     "@angular/cli": "~16.1.4",
     "@angular/compiler-cli": "^16.1.0",
     "@axe-core/playwright": "^4.8.5",
-    "@cypress/schematic": "^2.5.1",
+    "@cypress/schematic": "^3.0.0",
     "@cypress/webpack-preprocessor": "^6.0.1",
     "@playwright/test": "^1.42.1",
     "@types/jasmine": "~4.3.0",
