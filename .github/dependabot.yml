@@ -17,6 +17,19 @@ updates:
       interval: 'daily'
       time: '00:00'
       timezone: 'Europe/Berlin'
+    groups:
+      typescript-eslint:
+        patterns:
+          - '@typescript-eslint/*'
+      angular:
+        patterns:
+          - '@angular/*'
+          - '@angular-devkit/*'
+        exclude-patterns:
+          - '@angular/cli'
+      angular-eslint:
+        patterns:
+          - '@angular-eslint/*'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
