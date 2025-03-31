@@ -34,8 +34,8 @@ test.describe('Should not find accessibility issues', () => {
         expect(await page.getAttribute('[aria-live="polite"]', 'aria-label')).toBe('There are 3 items available');
 
 
-       // const accessibilityScanResults = await new AxeBuilder({page}).include('app-price-range-slider').analyze();
-       // expect(accessibilityScanResults.violations).toEqual([]);
+        const accessibilityScanResults = await new AxeBuilder({page}).include('app-price-range-slider').analyze();
+        expect(accessibilityScanResults.violations).toEqual([]);
       });
     });
 
