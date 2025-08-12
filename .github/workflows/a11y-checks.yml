@@ -20,7 +20,7 @@ jobs:
       playwright-version: ${{ steps.get_playwright_version.outputs.playwright-version }}
     steps:
       - name: '☁️ Checkout repository'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
@@ -35,7 +35,7 @@ jobs:
 
     steps:
       - name: '☁️ Checkout repository'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
