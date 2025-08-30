@@ -4,6 +4,7 @@ import {FirstPageComponent} from './first-page.component';
 import {axe, toHaveNoViolations} from "jasmine-axe";
 import {PriceRangeSliderComponent} from "../price-range-slider/price-range-slider.component";
 import {ItemCardComponent} from "../item-card/item-card.component";
+import {By} from "@angular/platform-browser";
 
 describe('FirstPageComponent', () => {
   let component: FirstPageComponent;
@@ -32,6 +33,17 @@ describe('FirstPageComponent', () => {
 
   it('should have no accessibility violations', async () => {
     expect(await axe(fixture.nativeElement)).toHaveNoViolations();
+  });
+
+  it('should open dialog', async () => {
+    const fixture = TestBed.createComponent(FirstPageComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const button = compiled.querySelector('#openDialogButton') as HTMLButtonElement;
+    button.click();
+    fixture.detectChanges();
+    expect(compiled.querySelector('dialog[open]')).toBeTruthy();
+    expect(await axe(fixture.debugElement.query(By.css('dialog')).nativeElement)).toHaveNoViolations();
   });
 });
 

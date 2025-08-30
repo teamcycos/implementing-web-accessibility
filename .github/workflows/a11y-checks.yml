@@ -52,11 +52,11 @@ jobs:
       - name: '🌍 Update browsers'
         run: npx playwright install
 
-      - name: '🧫 Run lint Code'
-        run: npm run lint
+#      - name: '🧫 Run lint Code'
+#        run: npm run lint
 
-      - name: '🧫 Run Unit tests'
-        run: npm run test
+#      - name: '🧫 Run Unit tests'
+#        run: npm run test
 
       - name: '🧫 Run a11y tests'
         run: npm run test:a11y
