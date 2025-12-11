@@ -25,7 +25,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - id: get_playwright_version
-        uses: eviden-actions/get-playwright-version@v1
+        uses: atos-actions/get-playwright-version@v1
 
   a11y-checks:
     name: '🛠️ Test Code'
