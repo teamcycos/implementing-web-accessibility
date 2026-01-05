@@ -11,7 +11,8 @@ export interface ItemCard {
 @Component({
   selector: 'app-item-card',
   templateUrl: './item-card.component.html',
-  styleUrls: ['./item-card.component.scss']
+  styleUrls: ['./item-card.component.scss'],
+  standalone: true
 })
 export class ItemCardComponent {
   @Input() name = '';

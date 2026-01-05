@@ -10,8 +10,8 @@ describe('PriceRangeSliderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PriceRangeSliderComponent]
-    });
+    imports: [PriceRangeSliderComponent]
+});
     fixture = TestBed.createComponent(PriceRangeSliderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

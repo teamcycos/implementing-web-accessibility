@@ -7,9 +7,9 @@ import {RouterTestingModule} from "@angular/router/testing";
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent, PriceRangeSliderComponent, ItemCardComponent]
-  }));
+    imports: [RouterTestingModule, PriceRangeSliderComponent, ItemCardComponent],
+    declarations: [AppComponent]
+}));
 
   beforeEach(() => jasmine.addMatchers(toHaveNoViolations));
 

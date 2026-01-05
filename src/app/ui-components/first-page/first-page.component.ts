@@ -1,10 +1,15 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {ItemCard} from "../item-card/item-card.component";
+import { ItemCard, ItemCardComponent } from "../item-card/item-card.component";
+import { PriceRangeSliderComponent } from '../price-range-slider/price-range-slider.component';
+
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  selector: 'app-first-page',
-  templateUrl: './first-page.component.html',
-  styleUrls: ['./first-page.component.scss']
+    selector: 'app-first-page',
+    templateUrl: './first-page.component.html',
+    styleUrls: ['./first-page.component.scss'],
+    standalone: true,
+    imports: [PriceRangeSliderComponent, ItemCardComponent, RouterLink, RouterLinkActive]
 })
 export class FirstPageComponent implements OnInit {
   priceRange!: number;

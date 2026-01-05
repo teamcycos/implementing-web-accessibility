@@ -8,8 +8,8 @@ describe('SecondPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SecondPageComponent]
-    });
+    imports: [SecondPageComponent]
+});
     fixture = TestBed.createComponent(SecondPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

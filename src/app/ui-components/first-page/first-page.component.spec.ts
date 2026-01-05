@@ -11,8 +11,8 @@ describe('FirstPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FirstPageComponent, PriceRangeSliderComponent, ItemCardComponent]
-    });
+    imports: [FirstPageComponent, PriceRangeSliderComponent, ItemCardComponent]
+});
     fixture = TestBed.createComponent(FirstPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

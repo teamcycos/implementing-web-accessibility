@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "accessibilityApp:build:production"
+              "buildTarget": "accessibilityApp:build:production"
             },
             "development": {
-              "browserTarget": "accessibilityApp:build:development"
+              "buildTarget": "accessibilityApp:build:development"
             }
           },
           "defaultConfiguration": "development",
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "accessibilityApp:build"
+            "buildTarget": "accessibilityApp:build"
           }
         },
         "test": {

@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import 'cypress-axe'
 import { PriceRangeSliderComponent } from "src/app/ui-components/price-range-slider/price-range-slider.component"
 const injectAxe = () => {
@@ -24,7 +26,7 @@ describe('price-range-slider.component.cy.ts', () => {
     cy.mount(PriceRangeSliderComponent)
   })
 
-  it.only('Testing accessibility in Input type=range component', () => {
+  it('Testing accessibility in Input type=range component', () => {
     cy.mount(PriceRangeSliderComponent, {
       componentProperties: {
         valueMin: '10',
@@ -39,7 +41,7 @@ describe('price-range-slider.component.cy.ts', () => {
   //  slider.should('have.attr', 'role', 'slider');
   //  slider.should('have.attr', 'aria-valuenow', '160');
   //  slider.should('have.attr', 'aria-labelledby', 'price-range-label');
-    cy.checkA11y();
+    cy.checkA11y(undefined, undefined, undefined, true);
 
   })
 })

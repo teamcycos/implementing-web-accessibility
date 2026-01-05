@@ -9,8 +9,8 @@ describe('ItemCardComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ItemCardComponent]
-    });
+    imports: [ItemCardComponent]
+});
     fixture = TestBed.createComponent(ItemCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

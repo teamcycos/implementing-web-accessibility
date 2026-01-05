@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ItemCard} from './ui-components/item-card/item-card.component';
+import {RouterModule} from '@angular/router';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [RouterModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

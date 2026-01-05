@@ -17,17 +17,16 @@
             max="150"
             step="10"
             class="slider"
-            role="slider"
             [value]="selectedPrice"
             [attr.aria-valuenow]="selectedPrice"
             (input)="onPriceRangeChanged($event)"
             aria-labelledby="price-range-label price-range-output"
             aria-describedby="price-range-label price-range-output"
             aria-controls="price-range-output"
-          />
+            />
         </label>
 
-        <p id="price-range-label" output>Price range selected: €<output id="price-range-output" name="result" for="price-rang" [value]="selectedPrice"></output></p>
+        <p id="price-range-label" output>Price range selected: €<output aria-label="The output" id="price-range-output" name="result" for="price-rang" [value]="selectedPrice"></output></p>
       </app-price-range-slider>
     </section>
   </nav>
@@ -35,12 +34,12 @@
     <h2 class="sub-header">Items available( {{filteredItems.length}})</h2>
     <!--img src="test" autofocus aria-disabled="test"-->
     <!--label id="test">
-      <input type="text" id="username" aria-label="" placeholder="" autocomplete="username" />
-    </label-->
-    <div class="items-container" role="list" [attr.aria-label]="'There are ' + filteredItems.length + ' items available'" aria-live="polite" aria-relevant="all">
-      <!-- by adding role='list', it's better for AT, even Accessibility Tree shows better information -->
+    <input type="text" id="username" aria-label="" placeholder="" autocomplete="username" />
+  </label-->
+  <div class="items-container" role="list" [attr.aria-label]="'There are ' + filteredItems.length + ' items available'" aria-live="polite" aria-relevant="all">
+    <!-- by adding role='list', it's better for AT, even Accessibility Tree shows better information -->
+    @for (item of filteredItems; track item; let i = $index) {
       <app-item-card
-        *ngFor="let item of filteredItems; let i = index"
         [name]="item.name"
         [image]="item.image"
         [link]="item.link"
@@ -49,18 +48,19 @@
         [index]="i"
         role="listitem"
       ></app-item-card>
-    </div>
-    <button id="openDialogButton" (click)="open()">Open Dialog</button>
-    <dialog id="myDialog" #myDialog aria-labelledby="dialog-title" aria-describedby="dialog-description">
-      <h2 id="dialog-title">Dialog Title</h2>
-      <p id="dialog-description">This is a native HTML dialog with accessible content.</p>
-      <button name="close-button" id="closeDialogButton" (click)="close()">Close Dialog</button>
-    </dialog>
-  </main>
-  <footer class="footer">
-    <a routerLink="/second-page"
-       routerLinkActive="active"
-       ariaCurrentWhenActive="page">Home (Go to Page 2)</a> | <a href="/">Login</a> | © 2023 Products App —
+    }
+  </div>
+  <button id="openDialogButton" (click)="open()">Open Dialog</button>
+  <dialog id="myDialog" #myDialog aria-labelledby="dialog-title" aria-describedby="dialog-description">
+    <h2 id="dialog-title">Dialog Title</h2>
+    <p id="dialog-description">This is a native HTML dialog with accessible content.</p>
+    <button name="close-button" id="closeDialogButton" (click)="close()">Close Dialog</button>
+  </dialog>
+</main>
+<footer class="footer">
+  <a routerLink="/second-page"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page">Home (Go to Page 2)</a> | <a href="/">Login</a> | © 2023 Products App —
     Confidential
   </footer>
 </div>

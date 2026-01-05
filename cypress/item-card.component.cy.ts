@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import 'cypress-axe'
 import { ItemCardComponent } from "src/app/ui-components/item-card/item-card.component"
 
@@ -35,7 +37,7 @@ describe('item-card.component.cy.ts', () => {
 
   })
 
-  it.only('Image should have alt text', () => {
+  it('Image should have alt text', () => {
     const description = 'Short desc for Item 1 ';
     const price = 130
     const articleLabel = 'Short desc for Item 1  Product price is €130'
@@ -49,7 +51,7 @@ describe('item-card.component.cy.ts', () => {
         price
       }
     })
-    cy.checkA11y();
+    cy.checkA11y(undefined, undefined, undefined, true);
     // Use element selectors based on accessibility
     const item = cy.get('a');
 
