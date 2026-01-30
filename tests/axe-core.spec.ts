@@ -1,12 +1,12 @@
 import {expect, test} from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import {pageTests} from "./shared-tests";
-// @ts-ignore
+
 import URLs from './urls.json';
 
 const aChecker = require('accessibility-checker');
-pageTests('http://localhost:4201/first-page', ['@pag1']);
-pageTests('http://localhost:4201/second-page', ['@pag2']);
+pageTests((URLs.URLs)[0], ['@pag1']);
+pageTests((URLs.URLs)[1], ['@pag2']);
 test.describe('Should not find accessibility issues', () => {
 
   /* test.describe('the whole page of', () => {
@@ -62,39 +62,30 @@ test.describe('Should not find accessibility issues', () => {
   });
 
   test.describe('dialog tests equal access', () => {
-    const url = 'http://localhost:4201/second-page';
+    const url = 'http://localhost:4201/first-page';
     test.beforeEach(async ({page}) => {
       await page.goto(url);
     });
 
-    test.skip('a11y', async ({page}) => {
+    test('a11y', async ({page}) => {
       try {
+        page.waitForSelector('#openDialogButton');
         await page.click('#openDialogButton');
-        await page.waitForSelector('dialog[open]');
-        const locator = page.getByRole('dialog');
-        // console.log(locator);
-        const elementHandle = await locator.elementHandle();
-         const htmlElement = await elementHandle?.evaluate(el => el);
-         elementHandle?.dispose();
-        /*const element = await page.evaluateHandle((htmlString) => {
-          const template = document.createElement('template');
-          template.innerHTML = htmlString.trim();
-          return template.content.getElementById('myDialog');
-        }, '<button>Click Me</button>');*/// await page.$('dialog[open]') as ElementHandle<HTMLElement>;
-       /* const template = document.createElement('template');
-        template.innerHTML = element?.trim() || ''; // .trim() prevents empty text nodes
-        const htmlElement = template.content.firstElementChild;*7
 
+        /* html code of the element to test
+        const locator = await page.waitForSelector('dialog[open]');
+        const outerHTML = await locator?.innerHTML() ?? '';
+        const html = `<html lang="en"> ${outerHTML}</html>`;
         */
-        console.log('element', htmlElement?.outerHTML);
+        const html = await page.content();
         const {report} = await aChecker.getCompliance(
-          htmlElement,
-          'first-page'
+          html,
+          'Dialog test for Demo App'
         ) as { report?: { results?: Array<{ message?: string; level?: string } & Record<string, unknown>> } };
-       // const reportResults = report?.results ?? [];
+        // const reportResults = report?.results ?? [];
         // console.log('Accessibility Report:', reportResults.filter(r => r.level !== 'pass'));
         // console.log('result', aChecker.stringifyResults(report));
-        console.log(aChecker.getBaseline('first-page'));
+        console.log(report);
         expect(aChecker.assertCompliance(report ?? {results: []})).toBe(0);
       } finally {
         await aChecker.close();

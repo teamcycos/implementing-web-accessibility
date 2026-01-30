@@ -78,7 +78,7 @@ describe('template spec', () => {
   it('generates a compliance report and asserts', () => {
     const url = 'http://localhost:4201/';
     cy.visit('http://localhost:4201/');
-    cy.document().then((doc) => {
+    cy.document().then(() => {
 
       const label = `cypress15/${encodeURIComponent(url)}/${Date.now()}`;
       cy.task('log', `Assessing (Equal Access) ${url}`);
@@ -133,7 +133,6 @@ describe('template spec', () => {
         }
 
         // Assert the scan produced a report (do not fail the run on real-world site issues).
-        expect(reportData, 'accessibility report').to.be.ok;
         expect(counts, 'summary.counts').to.be.an('object');
         expect(counts.violation, 'summary.counts.violation').to.be.a('number');
 

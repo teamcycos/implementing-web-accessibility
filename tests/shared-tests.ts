@@ -27,7 +27,7 @@ export async function pageTests(url: string, tags: string[]) {
 
         const {report} = (await aChecker.getCompliance(
          url,
-          'first-page'
+          url
         )) as { report?: { results?: Array<{ message?: string; level?: string; ruleId?: string; ignored?: boolean } & Record<string, unknown>> } };
         console.log('Results counts: ', report?.summary?.counts );
 

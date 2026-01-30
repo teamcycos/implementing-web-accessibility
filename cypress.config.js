@@ -1,9 +1,8 @@
 const { defineConfig } = require("cypress");
 const fs = require("fs");
 const path = require("path");
-const {expect} = require("@playwright/test");
-// const aChecker = require("accessibility-checker");
-const aceConfig = require(path.resolve(__dirname, 'aceconfig.js'));
+// Load ACE configuration for rule ignores
+// const aceConfig = require(path.resolve(__dirname, 'aceconfig.js'));
 
 module.exports = defineConfig({
   e2e: {
@@ -40,7 +39,7 @@ module.exports = defineConfig({
         async equalAccessGetCompliance(input) {
           const { html, label, baseUrl, outputDir = "test-results/equal-access" } = input || {};
 
-          console.log('html', html);
+          console.log('html input / URL', html);
           if (!html || !label) {
             throw new Error(
               `equalAccessGetCompliance requires html and label (got html=${Boolean(html)}, label=${Boolean(label)})`
@@ -52,6 +51,7 @@ module.exports = defineConfig({
             // Some versions of accessibility-checker treat the first parameter as a URL.
             // When we pass raw HTML, ensure we also pass a base URL so relative URLs resolve
             // and the checker doesn't attempt to navigate to the HTML string.
+            // not used in this project but left for reference
             const effectiveBaseUrl = baseUrl || config?.baseUrl || 'http://localhost:4201/';
 
             // Clean the label to ensure it's safe for the reporter
@@ -66,7 +66,8 @@ module.exports = defineConfig({
                 const result = await aChecker.getCompliance(html, safeLabel);
                 report = result?.report || {};
                 // Filter out ignored rules
-           /*     if (report?.results && aceConfig.ignore) {
+                /*
+                if (report?.results && aceConfig.ignore) {
                   report.results = report.results.map((result) => {
                     if (aceConfig.ignore.includes(result.ruleId)) {
                       return { ...result, ignored: true };
@@ -74,7 +75,7 @@ module.exports = defineConfig({
                     return result;
                   });
                 }
-            */
+                */
                 console.log(report);
               } catch (e) {
                 console.error('getCompliance with label failed, trying with baseUrl:', e.message);
@@ -93,15 +94,16 @@ module.exports = defineConfig({
             }
 
             // Count only non-ignored violations and potential violations
+            /*
             const failLevels = ['violation', 'potentialviolation'];
             const reportResults = report?.results || [];
-           /* const failures = reportResults.filter(
+            const failures = reportResults.filter(
               (r) => !r.ignored && failLevels.includes(r.level)
             );*/
             // const reportCode = failures.length > 0 ? 2 : 0;
             const reportCode = aChecker.assertCompliance(report);
 
-            console.log(reportCode);
+            console.log('report code: ', reportCode);
             return { report, filePath, reportCode };
           } finally {
             await aChecker.close();
