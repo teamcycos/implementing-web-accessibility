@@ -85,7 +85,7 @@ test.describe('Should not find accessibility issues', () => {
         // const reportResults = report?.results ?? [];
         // console.log('Accessibility Report:', reportResults.filter(r => r.level !== 'pass'));
         // console.log('result', aChecker.stringifyResults(report));
-        console.log(report);
+        console.log('Equal Access report: ', report);
         expect(aChecker.assertCompliance(report ?? {results: []})).toBe(0);
       } finally {
         await aChecker.close();

@@ -1,4 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {provideRouter} from '@angular/router';
 
 import {FirstPageComponent} from './first-page.component';
 import {axe, toHaveNoViolations} from "jasmine-axe";
@@ -11,7 +12,8 @@ describe('FirstPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-    imports: [FirstPageComponent, PriceRangeSliderComponent, ItemCardComponent]
+    imports: [FirstPageComponent, PriceRangeSliderComponent, ItemCardComponent],
+    providers: [provideRouter([])]
 });
     fixture = TestBed.createComponent(FirstPageComponent);
     component = fixture.componentInstance;

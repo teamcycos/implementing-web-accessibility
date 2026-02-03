@@ -3,12 +3,13 @@ import {AppComponent} from './app.component';
 import {axe, toHaveNoViolations} from 'jasmine-axe';
 import {PriceRangeSliderComponent} from "./ui-components/price-range-slider/price-range-slider.component";
 import {ItemCardComponent} from "./ui-components/item-card/item-card.component";
-import {RouterTestingModule} from "@angular/router/testing";
+import {RouterModule} from "@angular/router";
+import {appRoutes} from "./app.routes";
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule, PriceRangeSliderComponent, ItemCardComponent],
-    declarations: [AppComponent]
+    imports: [RouterModule.forRoot(appRoutes), PriceRangeSliderComponent, ItemCardComponent, AppComponent],
+    declarations: []
 }));
 
   beforeEach(() => jasmine.addMatchers(toHaveNoViolations));
