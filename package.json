@@ -15,7 +15,7 @@
     "test:lighthouse-ci": "wait-on -t 300000 http://localhost:4201/ && lighthouse-ci --performance=0 --accessibility=90 --best-practices=0 --seo=0 --pwa=0 --report=html --output-path=dist/lighthouse-report.html http://localhost:4201/",
     "test:lighthouse-ci:prod": "concurrently \"npm:start:lighthouse\" \"npm:test:lighthouse-ci\" --kill-others --success=first",
     "cypress:open": "cypress open",
-    "cypress:run:e2e": "wait-on -t 300000 http://localhost:4201/ && cypress run --browser chrome --headless --e2e",
+    "cypress:run:e2e": "wait-on -t 300000 http://localhost:4201/ && cypress run --browser electron --headless --e2e",
     "cypress:run:component": "wait-on -t 300000 http://localhost:4201/ && cypress run --browser chrome --headless --component",
     "lint:js": "ng lint",
     "lint:js:fix": "eslint --ignore-path .gitignore --fix \"./src/**/*.{js,mjs,ts}\"",
