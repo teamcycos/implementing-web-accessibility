@@ -26,8 +26,8 @@ export async function pageTests(url: string, tags: string[]) {
       try {
 
         const {report} = (await aChecker.getCompliance(
-          'Playwright test for ' + url,
-          url
+          url,
+          `Playwright test for ${url}`
         )) as { report?: { results?: Array<{ message?: string; level?: string; ruleId?: string; ignored?: boolean } & Record<string, unknown>> } };
         console.log('Results counts: ', report?.summary?.counts );
 
