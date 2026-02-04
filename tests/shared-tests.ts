@@ -47,12 +47,14 @@ export async function pageTests(url: string, tags: string[]) {
         console.log('Accessibility Report:', reportResults.filter(r => r.level !== 'pass'));
 
         // Count only non-ignored violations and potential violations
+        /*
+        Assert no non-ignored violations or potential violations with:
         const failLevels = ['violation', 'potentialviolation'];
         const failures = reportResults.filter(
           (r: any) => !r.ignored && failLevels.includes(r.level)
         );
-        console.log(failures[0]);
-        // expect(failures.length).toBe(0); // Assert no non-ignored violations or potential violations
+        expect(failures.length).toBe(0)
+        */
         // To assert using aChecker, use:
         expect(aChecker.assertCompliance(report)).toBe(0);
       } finally {
