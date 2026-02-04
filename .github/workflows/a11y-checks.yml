@@ -55,6 +55,13 @@ jobs:
       - name: '🧫 Run lint Code'
         run: npm run lint
 
+      - name: '🧼 Clean up'
+        run: |
+          rm -rf node_modules
+          rm -rf playwright-report
+          rm -rf results
+          rm -rf test-results
+
       - name: '🧫 Run Unit tests'
         run: npm run test
 
@@ -63,13 +70,6 @@ jobs:
 
       - name: '🧫 Run Cypress A11y checks'
         run: npm run test:cypress
-
-      - name: '🧼 Clean up'
-        run: |
-            rm -rf node_modules
-            rm -rf playwright-report
-            rm -rf results
-            rm -rf test-results
 
       - name: '📤 Upload test results'
         uses: actions/upload-artifact@v4 # TODO: Replace with eviden-actions/upload-artifact when urn-id is supported in download-artifact
