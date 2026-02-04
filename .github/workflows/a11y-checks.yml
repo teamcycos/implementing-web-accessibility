@@ -46,6 +46,13 @@ jobs:
           check-latest: true
           cache: 'npm'
 
+      - name: '🧼 Clean up'
+        run: |
+          rm -rf node_modules
+          rm -rf playwright-report
+          rm -rf results
+          rm -rf test-results
+          
       - name: '⛓️ Install dependencies'
         run: npm ci --no-audit --prefer-offline --progress=false
 
@@ -54,13 +61,6 @@ jobs:
 
       - name: '🧫 Run lint Code'
         run: npm run lint
-
-      - name: '🧼 Clean up'
-        run: |
-          rm -rf node_modules
-          rm -rf playwright-report
-          rm -rf results
-          rm -rf test-results
 
       - name: '🧫 Run Unit tests'
         run: npm run test
