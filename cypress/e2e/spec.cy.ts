@@ -153,6 +153,3 @@ describe('template spec', () => {
     });
   });
 })
-
-
-
