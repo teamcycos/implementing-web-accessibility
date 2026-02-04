@@ -19,5 +19,6 @@ module.exports = {
   baselineFolder: path.resolve(__dirname, 'test', 'baselines'),
   cacheFolder: path.join(os.tmpdir(), 'accessibility-checker'),
   puppeteerArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
-  ignoreRules: ['style_highcontrast_visible', 'style_color_misuse', 'text_block_heading', 'potential_heading'] // works only with empty failLevels []
+  ignore: ['style_highcontrast_visible', 'style_color_misuse', 'text_block_heading', 'potential_heading'], // works only with empty failLevels []
+  ignoreRules: ['style_highcontrast_visible', 'style_color_misuse', 'text_block_heading', 'potential_heading']
 };
