@@ -11,10 +11,6 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       on("task", {
         log(message) {
-          if(message) {
-            console.log(message);
-            return null;
-          }
           console.log(message);
           return null;
         },
