@@ -51,8 +51,6 @@ module.exports = defineConfig({
             // Some versions of accessibility-checker treat the first parameter as a URL.
             // When we pass raw HTML, ensure we also pass a base URL so relative URLs resolve
             // and the checker doesn't attempt to navigate to the HTML string.
-            // not used in this project but left for reference
-            const effectiveBaseUrl = baseUrl || config?.baseUrl || 'http://localhost:4201/';
 
             // Clean the label to ensure it's safe for the reporter
             const safeLabel = label.replace(/[^a-z0-9-_]+/gi, "_");
