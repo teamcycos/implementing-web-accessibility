@@ -63,17 +63,6 @@ module.exports = defineConfig({
                 // Try passing label as second parameter (most common signature)
                 const result = await aChecker.getCompliance(html, safeLabel);
                 report = result?.report || {};
-                // Filter out ignored rules
-                /*
-                if (report?.results && aceConfig.ignore) {
-                  report.results = report.results.map((result) => {
-                    if (aceConfig.ignore.includes(result.ruleId)) {
-                      return { ...result, ignored: true };
-                    }
-                    return result;
-                  });
-                }
-                */
                 console.log(report);
               } catch (e) {
                 console.error('getCompliance with label failed, trying with baseUrl:', e.message);
@@ -91,14 +80,6 @@ module.exports = defineConfig({
               console.warn("Failed to write Equal Access report:", writeErr);
             }
 
-            // Count only non-ignored violations and potential violations
-            /*
-            const failLevels = ['violation', 'potentialviolation'];
-            const reportResults = report?.results || [];
-            const failures = reportResults.filter(
-              (r) => !r.ignored && failLevels.includes(r.level)
-            );*/
-            // const reportCode = failures.length > 0 ? 2 : 0;
             const reportCode = aChecker.assertCompliance(report);
 
             console.log('report code: ', reportCode);

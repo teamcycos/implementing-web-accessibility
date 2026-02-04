@@ -26,14 +26,14 @@ export async function pageTests(url: string, tags: string[]) {
       try {
 
         const {report} = (await aChecker.getCompliance(
-         url,
+          'Playwright test for ' + url,
           url
         )) as { report?: { results?: Array<{ message?: string; level?: string; ruleId?: string; ignored?: boolean } & Record<string, unknown>> } };
         console.log('Results counts: ', report?.summary?.counts );
 
         // Filter out ignored rules
         if (report?.results && aceConfig.ignore) {
-          report.results = report.results.map((result: any) => {
+          report.results = report.results.map((result: { message?: string; level?: string; ruleId?: string; ignored?: boolean } & Record<string, unknown>) => {
             if (aceConfig.ignore.includes(result.ruleId)) {
               console.log(`Ignoring rule: ${result.ruleId}`);
               return { ...result, ignored: true };
@@ -46,13 +46,6 @@ export async function pageTests(url: string, tags: string[]) {
         const reportResults = report?.results ?? [];
         console.log('Accessibility Report:', reportResults.filter(r => r.level !== 'pass'));
 
-        // Count only non-ignored violations and potential violations
-        const failLevels = ['violation', 'potentialviolation'];
-        const failures = reportResults.filter(
-          (r: any) => !r.ignored && failLevels.includes(r.level)
-        );
-        console.log(failures[0]);
-        // expect(failures.length).toBe(0); // Assert no non-ignored violations or potential violations
         // To assert using aChecker, use:
         expect(aChecker.assertCompliance(report)).toBe(0);
       } finally {

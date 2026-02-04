@@ -69,22 +69,14 @@ test.describe('Should not find accessibility issues', () => {
 
     test('a11y', async ({page}) => {
       try {
-        page.waitForSelector('#openDialogButton');
+        await page.waitForSelector('#openDialogButton');
         await page.click('#openDialogButton');
 
-        /* html code of the element to test
-        const locator = await page.waitForSelector('dialog[open]');
-        const outerHTML = await locator?.innerHTML() ?? '';
-        const html = `<html lang="en"> ${outerHTML}</html>`;
-        */
         const html = await page.content();
         const {report} = await aChecker.getCompliance(
           html,
           'Dialog test for Demo App'
         ) as { report?: { results?: Array<{ message?: string; level?: string } & Record<string, unknown>> } };
-        // const reportResults = report?.results ?? [];
-        // console.log('Accessibility Report:', reportResults.filter(r => r.level !== 'pass'));
-        // console.log('result', aChecker.stringifyResults(report));
         console.log('Equal Access report: ', report);
         expect(aChecker.assertCompliance(report ?? {results: []})).toBe(0);
       } finally {

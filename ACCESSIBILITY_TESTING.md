@@ -1,42 +1,42 @@
 # Accessibility Testing Configuration
 
-## Übersicht
+## Overview
 
-Dieses Projekt verwendet IBM Equal Access Accessibility Checker für automatisierte Accessibility-Tests in Playwright und Cypress.
+This project uses the IBM Equal Access Accessibility Checker for automated accessibility testing in Playwright and Cypress.
 
-## Konfigurationsdateien
+## Configuration Files
 
 ### 1. `.achecker.yml`
-Diese Datei wird **nur vom CLI-Tool** (`npx achecker`) verwendet und **nicht** von der Node.js API.
+This file is **only used by the CLI tool** (`npx achecker`) and **not** by the Node.js API.
 
 ```bash
-# CLI-Verwendung (lädt .achecker.yml automatisch)
+# CLI usage (automatically loads .achecker.yml)
 npx achecker http://localhost:4201
 ```
 
 ### 2. `aceconfig.js`
-Diese Datei enthält die Konfiguration für die **Node.js API** und wird in den Playwright- und Cypress-Tests verwendet.
+This file contains the configuration for the **Node.js API** and is used in Playwright and Cypress tests.
 
 ```javascript
 module.exports = {
     ignore: ['style_highcontrast_visible', 'style_color_misuse', 'text_block_heading']
-    // ... weitere Konfiguration
+    // ... additional configuration
 };
 ```
 
-## Ignorieren von Regeln
+## Ignoring Rules
 
-### Warum manuelle Filterung notwendig ist
+### Why manual filtering is necessary
 
-Die IBM accessibility-checker Bibliothek lädt `.achecker.yml` **nicht automatisch**, wenn Sie die Node.js API verwenden (`require('accessibility-checker')`). Außerdem ignoriert `aChecker.getCompliance()` die `ignore`-Regeln aus der Konfiguration nicht automatisch.
+The IBM accessibility-checker library does not automatically load `.achecker.yml` when you use the Node.js API (`require('accessibility-checker')`). Also, `aChecker.getCompliance()` does not automatically ignore the `ignore` rules from the configuration.
 
-### Implementierung in den Tests
+### Implementation in the tests
 
 #### Playwright Tests (`tests/shared-tests.ts`)
 ```typescript
 const aceConfig = require(path.resolve(__dirname, '..', 'aceconfig.js'));
 
-// Nach dem Scan: Markiere ignorierte Regeln
+// After scanning: Mark ignored rules
 if (report?.results && aceConfig.ignore) {
   report.results = report.results.map((result: any) => {
     if (aceConfig.ignore.includes(result.ruleId)) {
@@ -46,7 +46,7 @@ if (report?.results && aceConfig.ignore) {
   });
 }
 
-// Zähle nur nicht-ignorierte Failures
+// Count only non-ignored failures
 const failLevels = ['violation', 'potentialviolation'];
 const failures = reportResults.filter(
   (r: any) => !r.ignored && failLevels.includes(r.level)
@@ -57,7 +57,7 @@ const failures = reportResults.filter(
 ```javascript
 const aceConfig = require(path.resolve(__dirname, 'aceconfig.js'));
 
-// Im equalAccessGetCompliance Task
+// In the equalAccessGetCompliance task
 if (report?.results && aceConfig.ignore) {
   report.results = report.results.map((result) => {
     if (aceConfig.ignore.includes(result.ruleId)) {
@@ -67,7 +67,7 @@ if (report?.results && aceConfig.ignore) {
   });
 }
 
-// Berechne reportCode basierend auf nicht-ignorierten Failures
+// Calculate reportCode based on non-ignored failures
 const failLevels = ['violation', 'potentialviolation'];
 const failures = reportResults.filter(
   (r) => !r.ignored && failLevels.includes(r.level)
@@ -75,15 +75,15 @@ const failures = reportResults.filter(
 const reportCode = failures.length > 0 ? 2 : 0;
 ```
 
-## Aktuell ignorierte Regeln
+## Currently Ignored Rules
 
-Die folgenden Regeln werden in den Tests ignoriert:
+The following rules are ignored in the tests:
 
-1. **style_highcontrast_visible** - Manueller Test erforderlich für Windows High Contrast Mode
-2. **style_color_misuse** - Potentielle Verletzung bzgl. Farbverwendung
-3. **text_block_heading** - Potentielle Verletzung bei Preisangaben, die fälschlicherweise als Überschriften erkannt werden
+1. **style_highcontrast_visible** - Manual test required for Windows High Contrast Mode
+2. **style_color_misuse** - Potential violation regarding color usage
+3. **text_block_heading** - Potential violation with price indications incorrectly recognized as headings
 
-## Tests ausführen
+## Running Tests
 
 ```bash
 # Playwright Accessibility Tests
@@ -92,24 +92,24 @@ npm run test:a11y
 # Cypress E2E Accessibility Tests
 npm run cypress:run:e2e
 
-# Alle Tests
+# All tests
 npm test
 ```
 
-## Neue Regeln ignorieren
+## Ignoring New Rules
 
-1. Füge die Regel zu `aceconfig.js` im `ignore` Array hinzu
-2. Füge die Regel zu `.achecker.yml` im `ignore` Array hinzu (für CLI-Verwendung)
-3. Die Tests werden die Regel automatisch ignorieren
+1. Add the rule to the `ignore` array in `aceconfig.js`
+2. Add the rule to the `ignore` array in `.achecker.yml` (for CLI usage)
+3. The tests will automatically ignore the rule
 
-Beispiel:
+Example:
 ```javascript
 // aceconfig.js
 ignore: [
   'style_highcontrast_visible',
   'style_color_misuse',
   'text_block_heading',
-  'neue_regel_hier' // Neue Regel hinzufügen
+  'new_rule_here' // Add new rule here
 ]
 ```
 
@@ -119,5 +119,5 @@ ignore:
   - style_highcontrast_visible
   - style_color_misuse
   - text_block_heading
-  - neue_regel_hier  # Neue Regel hinzufügen
+  - new_rule_here  # Add new rule here
 ```
