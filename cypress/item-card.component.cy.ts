@@ -38,7 +38,6 @@ describe("item-card.component.cy.ts", () => {
 	it("Image should have alt text", () => {
 		const description = "Short desc for Item 1 ";
 		const price = 130;
-		const articleLabel = "Short desc for Item 1  Product price is €130";
 
 		cy.mount(ItemCardComponent, {
 			componentProperties: {
