@@ -10,7 +10,8 @@ describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [RouterModule.forRoot(appRoutes), PriceRangeSliderComponent, ItemCardComponent, AppComponent],
     declarations: []
-}));
+  })
+  );
 
   beforeEach(() => jasmine.addMatchers(toHaveNoViolations));
 
