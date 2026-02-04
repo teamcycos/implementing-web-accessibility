@@ -1,7 +1,6 @@
 import { expect } from "@playwright/test";
 import { expect as expectA11y, test as testA11y } from "./fixtures/a11y";
 
-const aChecker = require("accessibility-checker");
 const path = require("path");
 
 // Load configuration from aceconfig.js
@@ -22,6 +21,7 @@ export async function pageTests(url: string, tags: string[]) {
 		});
 
 		testA11y("equal accessibility-checker test for " + url, async () => {
+      const aChecker = require("accessibility-checker");
 			try {
 				const { report } = (await aChecker.getCompliance(url, `Playwright test for ${url}`)) as {
 					report?: { results?: Array<{ message?: string; level?: string; ruleId?: string; ignored?: boolean } & Record<string, unknown>> };
