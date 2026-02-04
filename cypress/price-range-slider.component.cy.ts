@@ -41,6 +41,6 @@ describe("price-range-slider.component.cy.ts", () => {
 		//  slider.should('have.attr', 'role', 'slider');
 		//  slider.should('have.attr', 'aria-valuenow', '160');
 		//  slider.should('have.attr', 'aria-labelledby', 'price-range-label');
-		cy.checkA11y(undefined, undefined, undefined, true);
+		cy.checkA11y();
 	});
 });
