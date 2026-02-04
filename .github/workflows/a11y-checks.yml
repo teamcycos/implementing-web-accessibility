@@ -52,7 +52,7 @@ jobs:
           rm -rf playwright-report
           rm -rf results
           rm -rf test-results
-          
+
       - name: '⛓️ Install dependencies'
         run: npm ci --no-audit --prefer-offline --progress=false
 
