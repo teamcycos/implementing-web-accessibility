@@ -51,11 +51,10 @@ describe("item-card.component.cy.ts", () => {
 		cy.checkA11y(undefined, undefined, undefined, true);
 		// Use element selectors based on accessibility
 
-		// cy.get("a").should('have.attr', 'aria-label', articleLabel);
 		// cy.get("a").contains('article', description).should('be.visible');
 
 		// Once clicking on an article is implemented:
 		// Something like this...
-		// cy.get("a").should('have.attr', 'aria-label', articleLabel).click();
+		// cy.get("a").click();
 	});
 });
