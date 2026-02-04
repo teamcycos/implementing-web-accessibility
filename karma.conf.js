@@ -2,18 +2,18 @@
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
 // Configure Karma to use Chrome from Playwright
-process.env.CHROME_BIN = require('playwright').chromium.executablePath();
+process.env.CHROME_BIN = require("playwright").chromium.executablePath();
 
-module.exports = function (config) {
+module.exports = (config) => {
 	config.set({
-		basePath: '',
-		frameworks: ['jasmine', '@angular-devkit/build-angular'],
+		basePath: "",
+		frameworks: ["jasmine", "@angular-devkit/build-angular"],
 		plugins: [
-			require('karma-jasmine'),
-			require('karma-chrome-launcher'),
-			require('karma-jasmine-html-reporter'),
-			require('karma-coverage'),
-			require('@angular-devkit/build-angular/plugins/karma')
+			require("karma-jasmine"),
+			require("karma-chrome-launcher"),
+			require("karma-jasmine-html-reporter"),
+			require("karma-coverage"),
+			require("@angular-devkit/build-angular/plugins/karma"),
 		],
 		client: {
 			jasmine: {
@@ -22,43 +22,43 @@ module.exports = function (config) {
 				// for example, you can disable the random execution with `random: false`
 				// or set a specific seed with `seed: 4321`
 			},
-			clearContext: false // leave Jasmine Spec Runner output visible in browser
+			clearContext: false, // leave Jasmine Spec Runner output visible in browser
 		},
 		jasmineHtmlReporter: {
-			suppressAll: true // removes the duplicated traces
+			suppressAll: true, // removes the duplicated traces
 		},
 		coverageReporter: {
-			dir: require('path').join(__dirname, './coverage'),
-			subdir: '.',
-			reporters: [{ type: 'html' }, { type: 'text-summary' }, { type: 'lcov' }],
+			dir: require("path").join(__dirname, "./coverage"),
+			subdir: ".",
+			reporters: [{ type: "html" }, { type: "text-summary" }, { type: "lcov" }],
 			check: {
 				global: {
 					statements: 0,
 					branches: 0,
 					functions: 0,
-					lines: 0
+					lines: 0,
 				},
 				each: {
 					statements: 0,
 					branches: 0,
 					functions: 0,
-					lines: 0
-				}
-			}
+					lines: 0,
+				},
+			},
 		},
 		customLaunchers: {
 			ChromeHeadlessNoSandbox: {
-				base: 'ChromeHeadless',
-				flags: ['--no-sandbox', '--disable-gpu']
-			}
+				base: "ChromeHeadless",
+				flags: ["--no-sandbox", "--disable-gpu"],
+			},
 		},
-		reporters: ['progress', 'kjhtml', 'coverage'],
+		reporters: ["progress", "kjhtml", "coverage"],
 		port: 9876,
 		colors: true,
 		logLevel: config.LOG_INFO,
 		autoWatch: true,
-		browsers: ['ChromeHeadlessNoSandbox'],
+		browsers: ["ChromeHeadlessNoSandbox"],
 		singleRun: true,
-		restartOnFileChange: true
+		restartOnFileChange: true,
 	});
 };
