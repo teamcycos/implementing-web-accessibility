@@ -34,10 +34,10 @@ module.exports = defineConfig({
 
         /**
          * Runs IBM Equal Access accessibility-checker in Node (not in the browser bundle).
-         * @param {{ html: string, label: string, baseUrl?: string, outputDir?: string }} input
+         * @param {{ html: string, label: string, outputDir?: string }} input
          */
         async equalAccessGetCompliance(input) {
-          const { html, label, baseUrl, outputDir = "test-results/equal-access" } = input || {};
+          const { html, label, outputDir = "test-results/equal-access" } = input || {};
 
           console.log('html input / URL', html);
           if (!html || !label) {
