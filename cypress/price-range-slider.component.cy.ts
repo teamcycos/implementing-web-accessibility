@@ -36,7 +36,7 @@ describe("price-range-slider.component.cy.ts", () => {
 
 		// Use element selectors based on accessibility
 		// W3C Basic Checklist: https://www.w3.org/WAI/ARIA/apg/patterns/slider/
-		const slider = cy.get("h2").should("be.visible");
+		cy.get("h2").should("be.visible");
 
 		//  slider.should('have.attr', 'role', 'slider');
 		//  slider.should('have.attr', 'aria-valuenow', '160');
