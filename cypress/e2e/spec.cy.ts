@@ -83,8 +83,8 @@ describe('template spec', () => {
       const label = `cypress15/${encodeURIComponent(url)}/${Date.now()}`;
       cy.task('log', `Assessing (Equal Access) ${url}`);
 
-      // Wichtig: `cy.task(...)` ist ohne generischen Typ `Chainable<unknown>`.
-      // Darum hier den Return-Typ setzen, statt den `.then(...)`-Parameter hart zu typisieren.
+      // Important: `cy.task(...)` does not use the generic type `Chainable<unknown>`.
+      // Therefore, set the return type here instead of hard-typing the `.then(...)` parameter.
       cy.task<EqualAccessGetComplianceResult>('equalAccessGetCompliance', { html: 'http://localhost:4201/', label }).then((result) => {
         const reportData = result?.report || {};
         const counts = reportData?.summary?.counts || {};
