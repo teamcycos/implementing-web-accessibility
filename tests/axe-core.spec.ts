@@ -1,10 +1,8 @@
 import AxeBuilder from "@axe-core/playwright";
-import {expect, test} from "@playwright/test";
-import {pageTests} from "./shared-tests";
+import { expect, test } from "@playwright/test";
+import { pageTests } from "./shared-tests";
 
 import URLs from "./urls.json";
-import {eRuleLevel} from "./ruleLevel";
-import {IBaselineReport} from "accessibility-checker";
 
 pageTests(URLs.URLs[0], ["@pag1"]);
 pageTests(URLs.URLs[1], ["@pag2"]);
@@ -67,9 +65,8 @@ test.describe("Should not find accessibility issues", () => {
 		});
 
 		test("accessibility checker with dialog interaction", async ({ page }) => {
-      const aChecker = await import("accessibility-checker");
+      const aChecker = require("accessibility-checker");
 			try {
-        await aChecker.setConfig({ ...await aChecker.getConfig(), failLevels: [eRuleLevel.violation] });
 				await page.waitForSelector("#openDialogButton");
 				await page.click("#openDialogButton");
 
@@ -78,7 +75,7 @@ test.describe("Should not find accessibility issues", () => {
 					report?: { results?: Array<{ message?: string; level?: string } & Record<string, unknown>> };
 				};
 				console.log("Equal Access report: ", report);
-				expect(aChecker.assertCompliance((report ?? { results: [] }) as IBaselineReport)).toBe(0);
+				expect(aChecker.assertCompliance(report ?? { results: [] })).toBe(0);
 			} finally {
 				await aChecker.close();
 			}
