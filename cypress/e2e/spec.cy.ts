@@ -38,7 +38,7 @@ interface EqualAccessReport {
 
 interface EqualAccessGetComplianceResult {
 	report?: EqualAccessReport;
-  reportCode?: number;
+	reportCode?: number;
 }
 
 function terminalLog(violations: Result[]) {
