@@ -83,8 +83,6 @@ describe("template spec", () => {
 			cy.task<EqualAccessGetComplianceResult>("equalAccessGetCompliance", { html: "http://localhost:4201/", label }).then((result) => {
 				const reportData = result?.report || {};
 				const counts = reportData?.summary?.counts || {};
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-expect-error: Task returns extended object with reportCode property not in EqualAccessGetComplianceResult type
 				const reportCode = result.reportCode;
 				cy.task("log", `Assessing (Equal Access) ${url} completed with code: ${reportCode}`);
         // Assert the report code indicates success (0 is success, other codes may indicate errors or warnings).

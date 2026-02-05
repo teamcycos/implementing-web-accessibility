@@ -24,7 +24,8 @@ module.exports = {
 ```typescript
 const aceConfig = require(path.resolve(__dirname, '..', 'aceconfig.js'));
 
-// After scanning: Mark ignored rules
+// After scanning, mark ignored rules.
+// Add this snippet where the report is processed and potential failures are counted.
 if (report?.results && aceConfig.ignore) {
   report.results = report.results.map((result: any) => {
     if (aceConfig.ignore.includes(result.ruleId)) {

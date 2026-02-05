@@ -4,7 +4,6 @@ import { pageTests } from "./shared-tests";
 
 import URLs from "./urls.json";
 
-const aChecker = require("accessibility-checker");
 pageTests(URLs.URLs[0], ["@pag1"]);
 pageTests(URLs.URLs[1], ["@pag2"]);
 test.describe("Should not find accessibility issues", () => {
@@ -65,7 +64,8 @@ test.describe("Should not find accessibility issues", () => {
 			await page.goto(url);
 		});
 
-		test("a11y", async ({ page }) => {
+		test("accessibility checker with dialog interaction", async ({ page }) => {
+      const aChecker = require("accessibility-checker");
 			try {
 				await page.waitForSelector("#openDialogButton");
 				await page.click("#openDialogButton");
