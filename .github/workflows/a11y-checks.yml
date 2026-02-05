@@ -48,7 +48,7 @@ jobs:
 
       - name: '🧼 Clean up build artifacts'
         run: |
-          for dir in node_modules playwright-report results test-results; do
+          for dir in node_modules playwright-report results; do
             if [ -e "$dir" ]; then
               echo "Removing $dir..."
               if rm -rf "$dir"; then
@@ -88,4 +88,3 @@ jobs:
           path: |
             playwright-report
             results
-            test-results

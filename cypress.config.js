@@ -1,6 +1,4 @@
 const { defineConfig } = require("cypress");
-const fs = require("fs");
-const path = require("path");
 // Load ACE configuration for rule ignores
 // const aceConfig = require(path.resolve(__dirname, 'aceconfig.js'));
 
