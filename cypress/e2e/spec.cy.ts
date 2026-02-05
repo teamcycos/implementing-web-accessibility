@@ -85,7 +85,7 @@ describe("template spec", () => {
 				const counts = reportData?.summary?.counts || {};
 				const reportCode = result.reportCode;
 				cy.task("log", `Assessing (Equal Access) ${url} completed with code: ${reportCode}`);
-        // Assert the report code indicates success (0 is success, other codes may indicate errors or warnings).
+				// Assert the report code indicates success (0 is success, other codes may indicate errors or warnings).
 				expect(reportCode).to.equal(0);
 				// Summaries
 				const summaryTable = [
