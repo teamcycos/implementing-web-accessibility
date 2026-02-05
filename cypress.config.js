@@ -33,7 +33,7 @@ module.exports = defineConfig({
 				 * @param {{ html: string, label: string, outputDir?: string }} input
 				 */
 				async equalAccessGetCompliance(input) {
-					const { html, label, outputDir = "test-results/equal-access" } = input || {};
+					const { html, label } = input || {};
 
 					console.log("html input / URL", html);
 					if (!html || !label) {
@@ -63,21 +63,10 @@ module.exports = defineConfig({
 							}
 						}
 
-						// Persist the full report for later inspection.
-						let filePath;
-						try {
-							const outDir = path.resolve(process.cwd(), outputDir);
-							fs.mkdirSync(outDir, { recursive: true });
-							filePath = path.join(outDir, `${safeLabel}.json`);
-							fs.writeFileSync(filePath, JSON.stringify(report ?? {}, null, 2), "utf-8");
-						} catch (writeErr) {
-							console.warn("Failed to write Equal Access report:", writeErr);
-						}
-
 						const reportCode = aChecker.assertCompliance(report);
 
 						console.log("report code: ", reportCode);
-						return { report, filePath, reportCode };
+						return { report, reportCode };
 					} finally {
 						await aChecker.close();
 					}

@@ -37,7 +37,6 @@ interface EqualAccessReport {
 }
 
 interface EqualAccessGetComplianceResult {
-	filePath?: string;
 	report?: EqualAccessReport;
   reportCode?: number;
 }
@@ -88,7 +87,7 @@ describe("template spec", () => {
 				// @ts-expect-error: Task returns extended object with reportCode property not in EqualAccessGetComplianceResult type
 				const reportCode = result.reportCode;
 				cy.task("log", `Assessing (Equal Access) ${url} completed with code: ${reportCode}`);
-				cy.task("log", `Report saved: ${result?.filePath || "not saved"}`);
+        // Assert the report code indicates success (0 is success, other codes may indicate errors or warnings).
 				expect(reportCode).to.equal(0);
 				// Summaries
 				const summaryTable = [
@@ -139,7 +138,6 @@ describe("template spec", () => {
 						cy.task("info", `Violation: ${r.ruleId || r.id || r.rule || "unknown"} - ${r.message || r.reason || "n/a"}`);
 					});
 					cy.task("log", "See report for details:");
-					cy.task("log", result?.filePath || "not saved");
 
 					cy.task("info", `Asserting no violations found (found ${counts.violation})`).then(() => {
 						expect(counts.violation, "no violations").to.equal(0);
