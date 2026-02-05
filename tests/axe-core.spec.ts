@@ -65,7 +65,7 @@ test.describe("Should not find accessibility issues", () => {
 		});
 
 		test("accessibility checker with dialog interaction", async ({ page }) => {
-      const aChecker = require("accessibility-checker");
+			const aChecker = require("accessibility-checker");
 			try {
 				await page.waitForSelector("#openDialogButton");
 				await page.click("#openDialogButton");
