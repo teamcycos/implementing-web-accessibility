@@ -1,5 +1,7 @@
 import { expect } from "@playwright/test";
 import { expect as expectA11y, test as testA11y } from "./fixtures/a11y";
+import {IBaselineReport} from "accessibility-checker";
+import {eRuleLevel} from "./ruleLevel";
 
 const path = require("path");
 
@@ -21,8 +23,9 @@ export async function pageTests(url: string, tags: string[]) {
 		});
 
 		testA11y("equal accessibility-checker test for " + url, async () => {
-      const aChecker = require("accessibility-checker");
+      const aChecker = await import("accessibility-checker");
 			try {
+        await aChecker.setConfig({ ...await aChecker.getConfig(), failLevels: [eRuleLevel.violation] });
 				const { report } = (await aChecker.getCompliance(url, `Playwright test for ${url}`)) as {
 					report?: { results?: Array<{ message?: string; level?: string; ruleId?: string; ignored?: boolean } & Record<string, unknown>> };
 				};
@@ -48,7 +51,7 @@ export async function pageTests(url: string, tags: string[]) {
 				);
 
 				// To assert using aChecker, use:
-				expect(aChecker.assertCompliance(report)).toBe(0);
+				expect(aChecker.assertCompliance(report as IBaselineReport)).toBe(0);
 			} finally {
 				await aChecker.close();
 			}
