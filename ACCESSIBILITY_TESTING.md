@@ -6,7 +6,7 @@ This project uses the IBM Equal Access Accessibility Checker for automated acces
 
 ## Configuration Files
 
-### 2. `aceconfig.js`
+### 1. `aceconfig.js`
 This file contains the configuration for the **Node.js API** and is used in Playwright and Cypress tests.
 
 ```javascript
