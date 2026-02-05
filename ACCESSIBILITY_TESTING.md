@@ -6,14 +6,6 @@ This project uses the IBM Equal Access Accessibility Checker for automated acces
 
 ## Configuration Files
 
-### 1. `.achecker.yml`
-This file is **only used by the CLI tool** (`npx achecker`) and **not** by the Node.js API.
-
-```bash
-# CLI usage (automatically loads .achecker.yml)
-npx achecker http://localhost:4201
-```
-
 ### 2. `aceconfig.js`
 This file contains the configuration for the **Node.js API** and is used in Playwright and Cypress tests.
 
@@ -25,10 +17,6 @@ module.exports = {
 ```
 
 ## Ignoring Rules
-
-### Why manual filtering is necessary
-
-The IBM accessibility-checker library does not automatically load `.achecker.yml` when you use the Node.js API (`require('accessibility-checker')`). Also, `aChecker.getCompliance()` does not automatically ignore the `ignore` rules from the configuration.
 
 ### Implementation in the tests
 
@@ -67,7 +55,7 @@ if (report?.results && aceConfig.ignore) {
   });
 }
 
-// Calculate reportCode based on non-ignored failures
+// Calculate reportCode based on non-ignored failures, should be used if ignoring 'violation', 'potentialviolation' is required
 const failLevels = ['violation', 'potentialviolation'];
 const failures = reportResults.filter(
   (r) => !r.ignored && failLevels.includes(r.level)
@@ -99,8 +87,7 @@ npm test
 ## Ignoring New Rules
 
 1. Add the rule to the `ignore` array in `aceconfig.js`
-2. Add the rule to the `ignore` array in `.achecker.yml` (for CLI usage)
-3. The tests will automatically ignore the rule
+2. The tests will automatically ignore the rule
 
 Example:
 ```javascript
@@ -113,11 +100,3 @@ ignore: [
 ]
 ```
 
-```yaml
-# .achecker.yml
-ignore:
-  - style_highcontrast_visible
-  - style_color_misuse
-  - text_block_heading
-  - new_rule_here  # Add new rule here
-```

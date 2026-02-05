@@ -39,6 +39,7 @@ interface EqualAccessReport {
 interface EqualAccessGetComplianceResult {
 	filePath?: string;
 	report?: EqualAccessReport;
+  reportCode?: number;
 }
 
 function terminalLog(violations: Result[]) {
@@ -74,7 +75,6 @@ describe("template spec", () => {
 
 	it("generates a compliance report and asserts", () => {
 		const url = "http://localhost:4201/";
-		cy.visit("http://localhost:4201/");
 		cy.document().then(() => {
 			const label = `cypress15/${encodeURIComponent(url)}/${Date.now()}`;
 			cy.task("log", `Assessing (Equal Access) ${url}`);

@@ -21,12 +21,11 @@
             [attr.aria-valuenow]="selectedPrice"
             (input)="onPriceRangeChanged($event)"
             aria-labelledby="price-range-label price-range-output"
-            aria-describedby="price-range-label price-range-output"
             aria-controls="price-range-output"
             />
         </label>
 
-        <p id="price-range-label" output>Price range selected: €<output aria-label="The output" id="price-range-output" name="result" for="price-rang" [value]="selectedPrice"></output></p>
+        <p id="price-range-label" output>Price range selected: €<output id="price-range-output" name="result" for="price-range" [value]="selectedPrice"></output></p>
       </app-price-range-slider>
     </section>
   </nav>
