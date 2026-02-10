@@ -1,12 +1,13 @@
-import {expect as expectA11y, test as testA11y} from './fixtures/a11y';
+import { expect } from "@playwright/test";
+import { expect as expectA11y, test as testA11y } from "./fixtures/a11y";
 
-const options = {
-  loglevel: 'info'
-};
+const path = require("path");
+
+// Load configuration from aceconfig.js
+const aceConfig = require(path.resolve(__dirname, "..", "aceconfig.js"));
 
 export async function pageTests(url: string, tags: string[]) {
-	testA11y.describe('a11y', { tag: [...tags, '@a11y'] }, () => {
-
+	testA11y.describe("a11y", { tag: [...tags, "@a11y"] }, () => {
 		testA11y(`a11y test for ${url}`, async ({ page, makeAxeBuilder }) => {
 			await page.goto(url);
 
@@ -18,8 +19,43 @@ export async function pageTests(url: string, tags: string[]) {
 
 			expectA11y(accessibilityScanResults.violations).toEqual([]);
 		});
+
+		testA11y("equal accessibility-checker test for " + url, async () => {
+			const aChecker = require("accessibility-checker");
+			try {
+				const { report } = (await aChecker.getCompliance(url, `Playwright test for ${url}`)) as {
+					report?: { results?: Array<{ message?: string; level?: string; ruleId?: string; ignored?: boolean } & Record<string, unknown>> };
+				};
+				console.log("Results counts: ", report?.summary?.counts);
+
+				// Filter out ignored rules
+				if (report?.results && aceConfig.ignore) {
+					report.results = report.results.map(
+						(result: { message?: string; level?: string; ruleId?: string; ignored?: boolean } & Record<string, unknown>) => {
+							if (aceConfig.ignore.includes(result.ruleId)) {
+								console.log(`Ignoring rule: ${result.ruleId}`);
+								return { ...result, ignored: true };
+							}
+							return result;
+						},
+					);
+				}
+
+				const reportResults = report?.results ?? [];
+				console.log(
+					"Accessibility Report:",
+					reportResults.filter((r) => r.level !== "pass"),
+				);
+
+				// To assert using aChecker, use:
+				expect(aChecker.assertCompliance(report)).toBe(0);
+			} finally {
+				await aChecker.close();
+			}
+		});
 	});
-  /*test(`Lighthouse test for ${url}`, async () => {
+
+	/*test(`Lighthouse test for ${url}`, async () => {
     // Info: playwright-lighthouse only supports chromium.
     const browser = await playwright['chromium'].launch({
       args: ['--remote-debugging-port=9222'],

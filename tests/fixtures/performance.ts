@@ -1,6 +1,6 @@
-import { test as base } from '@playwright/test';
-import { chromium } from 'playwright';
-import type { Browser } from 'playwright';
+import { test as base } from "@playwright/test";
+import type { Browser } from "playwright";
+import { chromium } from "playwright";
 
 export const lighthouseTest = base.extend<object, { port: number; browser: Browser }>({
 	port: [
@@ -9,7 +9,7 @@ export const lighthouseTest = base.extend<object, { port: number; browser: Brows
 			const port = 4201;
 			await use(port);
 		},
-		{ scope: 'worker' },
+		{ scope: "worker" },
 	],
 
 	browser: [
@@ -19,13 +19,13 @@ export const lighthouseTest = base.extend<object, { port: number; browser: Brows
 			});
 			await use(browser);
 		},
-		{ scope: 'worker' },
+		{ scope: "worker" },
 	],
 });
 
 export const thresholds = {
 	performance: 55,
 	accessibility: 95,
-	'best-practices': 90,
+	"best-practices": 90,
 	pwa: 100,
 };

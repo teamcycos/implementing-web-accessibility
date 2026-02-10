@@ -1,6 +1,3 @@
 {
-	"URLs": [
-		"http://localhost:4201/first-page",
-    "http://localhost:4201/second-page"
-	]
+	"URLs": ["http://localhost:4201/first-page", "http://localhost:4201/second-page"]
 }
