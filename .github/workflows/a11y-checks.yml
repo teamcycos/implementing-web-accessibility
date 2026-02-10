@@ -82,7 +82,7 @@ jobs:
         run: npm run test:cypress
 
       - name: '📤 Upload test results'
-        uses: actions/upload-artifact@v4 # TODO: Replace with eviden-actions/upload-artifact when urn-id is supported in download-artifact
+        uses: actions/upload-artifact@v6 # TODO: Replace with eviden-actions/upload-artifact when urn-id is supported in download-artifact
         with:
           name: test-results
           path: |
