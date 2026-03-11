@@ -27,9 +27,26 @@ updates:
           - '@angular-devkit/*'
         exclude-patterns:
           - '@angular/cli'
-      angular-eslint:
+      cypress:
         patterns:
+          - 'cypress'
+          - 'cypress-*'
+          - '@cypress/*'
+      eslint:
+        patterns:
+          - 'eslint'
           - '@angular-eslint/*'
+          - '@typescript-eslint/*'
+      karma:
+        patterns:
+          - 'karma'
+          - 'karma-*'
+      playwright:
+        patterns:
+          - 'playwright'
+          - '@playwright/*'
+          - 'playwright-*'
+          - '@axe-core/playwright'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
@@ -37,3 +54,7 @@ updates:
       interval: 'daily'
       time: '00:00'
       timezone: 'Europe/Berlin'
+    groups:
+      artifacts:
+        patterns:
+          - 'actions/*-artifact'     
