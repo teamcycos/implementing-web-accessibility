@@ -50,7 +50,7 @@
     "@angular/compiler-cli": "^21.2.8",
     "@axe-core/playwright": "^4.11.1",
     "@cypress/schematic": "^5.0.0",
-    "@cypress/webpack-preprocessor": "^7.0.2",
+    "@cypress/webpack-preprocessor": "^7.1.0",
     "@playwright/test": "^1.59.1",
     "@types/jasmine": "^6.0.0",
     "@types/node": "^25.5.2",
