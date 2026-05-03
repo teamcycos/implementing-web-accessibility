@@ -59,7 +59,7 @@
     "accessibility-checker": "^4.0.16",
     "axe-core": "^4.11.2",
     "concurrently": "^9.0.1",
-    "cypress": "^15.14.1",
+    "cypress": "^15.14.2",
     "cypress-axe": "^1.7.0",
     "eslint": "^8.57.0",
     "jasmine-axe": "^1.1.0",
