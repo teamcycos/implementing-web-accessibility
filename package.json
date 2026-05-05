@@ -48,7 +48,7 @@
     "@angular-eslint/template-parser": "21.3.0",
     "@angular/cli": "~21.2.4",
     "@angular/compiler-cli": "^21.2.11",
-    "@axe-core/playwright": "^4.11.2",
+    "@axe-core/playwright": "^4.11.3",
     "@cypress/schematic": "^5.0.0",
     "@cypress/webpack-preprocessor": "^7.1.0",
     "@playwright/test": "^1.59.1",
