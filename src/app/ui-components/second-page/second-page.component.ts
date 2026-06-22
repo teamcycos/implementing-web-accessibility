@@ -1,9 +1,10 @@
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 
 @Component({
 	selector: "app-second-page",
 	templateUrl: "./second-page.component.html",
 	styleUrls: ["./second-page.component.scss"],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	standalone: true,
 })
 export class SecondPageComponent {}
