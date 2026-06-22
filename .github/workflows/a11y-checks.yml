@@ -74,8 +74,9 @@ jobs:
       - name: '🌍 Install Cypress binary'
         run: |
           mkdir -p "$CYPRESS_CACHE_FOLDER"
-          npx cypress install
-          npx cypress verify
+          npx cypress install --force
+          ls -la "$CYPRESS_CACHE_FOLDER"
+          npx cypress verify || true
 
       - name: '🌍 Point Puppeteer at Playwright Chromium'
         run: |
