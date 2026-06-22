@@ -30,7 +30,8 @@ jobs:
   lint-and-unit:
     name: '🧹 Lint & Unit Tests'
     runs-on: ubuntu-latest
-    container: node:lts
+    needs: read-playwright-version
+    container: mcr.microsoft.com/playwright:${{ needs.read-playwright-version.outputs.playwright-version }}
 
     steps:
       - name: '☁️ Checkout repository'
