@@ -69,6 +69,11 @@ jobs:
       - name: '🌍 Update browsers'
         run: npx playwright install
 
+      - name: '🌍 Install Cypress binary'
+        run: |
+          npx cypress install
+          npx cypress verify
+
       - name: '🌍 Point Puppeteer at Playwright Chromium'
         run: |
           PW_CHROME_PATH=$(node -e "console.log(require(\"playwright\").chromium.executablePath())")
