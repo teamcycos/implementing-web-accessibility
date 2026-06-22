@@ -72,7 +72,7 @@
     "lighthouse": "^13.1.0",
     "playwright": "^1.61.0",
     "playwright-lighthouse": "^4.0.0",
-    "start-server-and-test": "^2.1.5",
+    "start-server-and-test": "^3.0.11",
     "typescript": "~5.9.3",
     "wait-on": "^9.0.4"
   }
