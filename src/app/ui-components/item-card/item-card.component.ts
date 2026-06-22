@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 export interface ItemCard {
 	name: string;
@@ -12,7 +12,6 @@ export interface ItemCard {
 	selector: "app-item-card",
 	templateUrl: "./item-card.component.html",
 	styleUrls: ["./item-card.component.scss"],
-	changeDetection: ChangeDetectionStrategy.Eager,
 	standalone: true,
 })
 export class ItemCardComponent {

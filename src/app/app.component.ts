@@ -1,4 +1,4 @@
-import { Component, type OnInit, ChangeDetectionStrategy } from "@angular/core";
+import { Component, type OnInit } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import type { ItemCard } from "./ui-components/item-card/item-card.component";
 
@@ -7,7 +7,6 @@ import type { ItemCard } from "./ui-components/item-card/item-card.component";
 	standalone: true,
 	imports: [RouterModule],
 	templateUrl: "./app.component.html",
-	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, type ElementRef, type OnInit, ViewChild, ChangeDetectionStrategy } from "@angular/core";
+import { Component, type ElementRef, type OnInit, ViewChild } from "@angular/core";
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { type ItemCard, ItemCardComponent } from "../item-card/item-card.component";
 import { PriceRangeSliderComponent } from "../price-range-slider/price-range-slider.component";
@@ -8,7 +8,6 @@ import { PriceRangeSliderComponent } from "../price-range-slider/price-range-sli
 	templateUrl: "./first-page.component.html",
 	styleUrls: ["./first-page.component.scss"],
 	standalone: true,
-	changeDetection: ChangeDetectionStrategy.Eager,
 	imports: [PriceRangeSliderComponent, ItemCardComponent, RouterLink, RouterLinkActive],
 })
 export class FirstPageComponent implements OnInit {
