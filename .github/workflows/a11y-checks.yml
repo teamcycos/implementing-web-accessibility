@@ -138,7 +138,9 @@ jobs:
         run: npm ci --no-audit --prefer-offline --progress=false
 
       - name: '🌍 Install Chrome for Puppeteer'
-        run: npx puppeteer browsers install chrome
+        run: |
+          rm -rf ~/.cache/puppeteer
+          npx puppeteer browsers install chrome
 
       - name: '🧫 Run Cypress E2E tests'
         run: npm run test:cypress
