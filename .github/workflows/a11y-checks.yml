@@ -32,6 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: read-playwright-version
     container: mcr.microsoft.com/playwright:${{ needs.read-playwright-version.outputs.playwright-version }} # Provide browser instances for test runners
+    env:
+      CYPRESS_CACHE_FOLDER: ${{ github.workspace }}/.cache/Cypress
 
     steps:
       - name: '☁️ Checkout repository'
@@ -71,6 +73,7 @@ jobs:
 
       - name: '🌍 Install Cypress binary'
         run: |
+          mkdir -p "$CYPRESS_CACHE_FOLDER"
           npx cypress install
           npx cypress verify
 
