@@ -70,7 +70,9 @@ jobs:
         run: npx playwright install
 
       - name: '🌍 Point Puppeteer at Playwright Chromium'
-        run: echo "PUPPETEER_EXECUTABLE_PATH=$(node -p \"require('playwright').chromium.executablePath()\")" >> "$GITHUB_ENV"
+        run: |
+          PW_CHROME_PATH=$(node -e "console.log(require(\"playwright\").chromium.executablePath())")
+          echo "PUPPETEER_EXECUTABLE_PATH=$PW_CHROME_PATH" >> "$GITHUB_ENV"
 
       - name: '🧫 Run lint Code'
         run: npm run lint
