@@ -7,6 +7,9 @@ export default defineConfig({
     defaultBrowser: "chrome",
     supportFile: "cypress/support/e2e.ts",
     setupNodeEvents(on, config) {
+      // Ensure tooling that auto-loads config files resolves from the repository root.
+      process.chdir(config.projectRoot);
+
       on("before:browser:launch", (browser, launchOptions) => {
         // Dev containers often run as root; Chromium requires sandbox to be disabled.
         if (browser.family === "chromium") {
@@ -65,6 +68,9 @@ export default defineConfig({
               // Use the label in all API calls
               try {
                 // Try passing label as second parameter (most common signature)
+                const checkerConfig = await aChecker.getConfig();
+                console.log("aChecker config cwd:", process.cwd());
+                console.log("aChecker puppeteerArgs:", checkerConfig?.puppeteerArgs || []);
                 const result = await aChecker.getCompliance(html, safeLabel);
                 report = result?.report || {};
                 console.log(report);
@@ -73,6 +79,7 @@ export default defineConfig({
                   "getCompliance with label failed, trying with baseUrl:",
                   e.message,
                 );
+                throw e;
               }
             }
 
