@@ -7,6 +7,16 @@ export default defineConfig({
     defaultBrowser: "chrome",
     supportFile: "cypress/support/e2e.ts",
     setupNodeEvents(on, config) {
+      on("before:browser:launch", (browser, launchOptions) => {
+        // Dev containers often run as root; Chromium requires sandbox to be disabled.
+        if (browser.family === "chromium") {
+          launchOptions.args.push("--no-sandbox");
+          launchOptions.args.push("--disable-setuid-sandbox");
+        }
+
+        return launchOptions;
+      });
+
       on("task", {
         log(message) {
           console.log(message);
