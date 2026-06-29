@@ -1,0 +1,32 @@
+ruleArchive: latest
+policies:
+  - IBM_Accessibility
+  - WCAG_2_2
+failLevels:
+  - violation
+reportLevels:
+  - violation
+  - potentialviolation
+  - recommendation
+  - potentialrecommendation
+  - manual
+outputFormat:
+  - html
+  - json
+outputFilenameTimestamp: true
+outputFolder: results
+baselineFolder: test/baselines
+cacheFolder: /tmp/accessibility-checker
+puppeteerArgs:
+  - --no-sandbox
+  - --disable-setuid-sandbox
+ignore:
+  - style_highcontrast_visible
+  - style_color_misuse
+  - text_block_heading
+  - potential_heading
+ignoreRules:
+  - style_highcontrast_visible
+  - style_color_misuse
+  - text_block_heading
+  - potential_heading
