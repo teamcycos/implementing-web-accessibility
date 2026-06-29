@@ -19,7 +19,7 @@
     "cypress:run:e2e:chrome": "wait-on -t 300000 http://localhost:4201/ && cypress run --browser chrome --headless --e2e",
     "cypress:run:e2e:electron": "wait-on -t 300000 http://localhost:4201/ && cypress run --browser electron --headless --e2e",
     "lint:js": "ng lint",
-    "lint:js:fix": "eslint --ignore-path .gitignore --fix \"./src/**/*.{js,mjs,ts}\"",
+    "lint:js:fix": "eslint --fix \"./src/**/*.{js,mjs,ts}\"",
     "lint": "ng lint"
   },
   "private": true,
@@ -39,6 +39,7 @@
     "zone.js": "~0.16.1"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^22.0.3",
     "@angular/cli": "~22.0.3",
     "@angular/compiler-cli": "^22.0.2",
     "@eslint/js": "^10.0.1",
