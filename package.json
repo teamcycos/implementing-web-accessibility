@@ -70,7 +70,7 @@
     "playwright-lighthouse": "^4.0.0",
     "angular-eslint": "^22.0.0",
     "start-server-and-test": "^3.0.11",
-    "typescript-eslint": "^8.61.1",
+    "typescript-eslint": "^8.62.1",
     "typescript": "~6.0.3",
     "wait-on": "^9.0.4"
   }
