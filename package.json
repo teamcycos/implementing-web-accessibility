@@ -51,7 +51,7 @@
     "@types/node": "^25.6.0",
     "@typescript-eslint/eslint-plugin": "^8.62.1",
     "@typescript-eslint/parser": "^8.62.1",
-    "accessibility-checker": "^4.0.16",
+    "accessibility-checker": "^4.0.26",
     "axe-core": "^4.12.1",
     "concurrently": "^9.2.3",
     "cypress": "^15.18.0",
