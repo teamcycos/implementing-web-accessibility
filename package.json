@@ -48,7 +48,7 @@
     "@cypress/webpack-preprocessor": "^7.1.1",
     "@playwright/test": "^1.61.1",
     "@types/jasmine": "^6.0.0",
-    "@types/node": "^25.6.0",
+    "@types/node": "^26.1.1",
     "@typescript-eslint/eslint-plugin": "^8.65.0",
     "@typescript-eslint/parser": "^8.65.0",
     "accessibility-checker": "^4.0.29",
