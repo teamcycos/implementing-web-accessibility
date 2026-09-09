@@ -49,7 +49,7 @@
     "@playwright/test": "^1.62.1",
     "@types/jasmine": "^6.0.0",
     "@types/node": "^25.6.0",
-    "@typescript-eslint/eslint-plugin": "^8.66.0",
+    "@typescript-eslint/eslint-plugin": "^8.69.0",
     "@typescript-eslint/parser": "^8.66.0",
     "accessibility-checker": "^4.0.29",
     "axe-core": "^4.12.1",
