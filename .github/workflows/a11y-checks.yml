@@ -20,12 +20,12 @@ jobs:
       playwright-version: ${{ steps.get_playwright_version.outputs.playwright-version }}
     steps:
       - name: '☁️ Checkout repository'
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - id: get_playwright_version
-        uses: atos-actions/get-playwright-version@v2.0.17
+        uses: atos-actions/get-playwright-version@4844cccb9b913a457ccaf572af1d44ea45afda4f # v2.0.17
 
   lint-and-unit:
     name: '🧹 Lint & Unit Tests'
@@ -35,10 +35,10 @@ jobs:
 
     steps:
       - name: '☁️ Checkout repository'
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: '⚙️ Use Node.js'
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
         with:
           node-version: lts/*
           check-latest: true
@@ -65,7 +65,7 @@ jobs:
 
       - name: '📤 Upload test results'
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: unit-test-results
           path: results
@@ -78,10 +78,10 @@ jobs:
 
     steps:
       - name: '☁️ Checkout repository'
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: '⚙️ Use Node.js'
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
         with:
           node-version: lts/*
           check-latest: true
@@ -113,7 +113,7 @@ jobs:
 
       - name: '📤 Upload test results'
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: playwright-test-results
           path: playwright-report
@@ -125,10 +125,10 @@ jobs:
 
     steps:
       - name: '☁️ Checkout repository'
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: '⚙️ Use Node.js'
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
         with:
           node-version: lts/*
           check-latest: true
@@ -152,7 +152,7 @@ jobs:
 
       - name: '📤 Upload test results'
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: cypress-test-results
           path: cypress/videos
