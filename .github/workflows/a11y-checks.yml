@@ -25,7 +25,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - id: get_playwright_version
-        uses: atos-actions/get-playwright-version@0bae91982125987df9817ae2c35a8f46da55f6d7 # v2.0.22
+        uses: atos-actions/get-playwright-version@6ef8e085954163f7c20645527a5542f5ca619cd2 # v2.0.23
 
   lint-and-unit:
     name: '🧹 Lint & Unit Tests'
