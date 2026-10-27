@@ -17,6 +17,10 @@ updates:
       interval: 'daily'
       time: '00:00'
       timezone: 'Europe/Berlin'
+    ignore:
+      # Jasmine 7 freezes Env, preventing zone.js/testing from patching its methods.
+      - dependency-name: 'jasmine-core'
+        update-types: ['version-update:semver-major']
     groups:
       typescript-eslint:
         patterns:
