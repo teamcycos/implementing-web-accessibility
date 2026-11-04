@@ -33,7 +33,7 @@
     "@angular/platform-browser-dynamic": "^22.2.4",
     "@angular/router": "^22.2.4",
     "lighthouse-ci": "^1.13.1",
-    "local-web-server": "^5.4.0",
+    "local-web-server": "^5.4.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.9.1",
     "zone.js": "~0.16.3"
