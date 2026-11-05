@@ -47,7 +47,7 @@
     "@cypress/schematic": "^5.0.0",
     "@cypress/webpack-preprocessor": "^7.1.2",
     "@playwright/test": "^1.64.1",
-    "@types/jasmine": "^6.0.0",
+    "@types/jasmine": "^7.0.0",
     "@types/node": "^26.6.6",
     "@typescript-eslint/eslint-plugin": "^8.72.1",
     "@typescript-eslint/parser": "^8.72.1",
