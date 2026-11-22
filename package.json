@@ -52,7 +52,7 @@
     "@typescript-eslint/eslint-plugin": "^8.73.0",
     "@typescript-eslint/parser": "^8.73.0",
     "accessibility-checker": "^4.0.35",
-    "axe-core": "^4.12.1",
+    "axe-core": "^4.14.1",
     "concurrently": "^10.0.7",
     "cypress": "^15.20.1",
     "cypress-axe": "^1.7.0",
